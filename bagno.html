@@ -1,0 +1,272 @@
+<head>
+    <script type="text/javascript" src="https://unpkg.com/xlsx@0.15.1/dist/xlsx.full.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+    <header>
+        <p style="text-align:center; color:gold; font-size:50px; border: 5px dotted gold; border-radius: 20px; font-family: Verdana, Geneva, Tahoma, sans-serif;" class="center">
+            <image src="https://static.android.com.pl/uploads/2022/08/Counter-Strike-1280x720.jpg" height="35px" style="border-radius: 50%;">
+            Road To Global
+            <image src="https://static.android.com.pl/uploads/2022/08/Counter-Strike-1280x720.jpg" height="35px" style="border-radius: 50%;"></image>
+        </p>
+    </header>   
+    <div style="margin-left: auto; margin-right: auto">    
+        <div style="background-color: rgba(34, 34, 34, 0.527); width:35%; border: 2px outset gray; margin-top: 10px; float:left;">
+            <p style="margin-top: 25px; text-align: center; font-size: 30px; font-weight: 600; color:lightgray; font-family: Verdana, Geneva, Tahoma, sans-serif;">Andrew Jewkill</p>
+            <image src="https://avatars.akamai.steamstatic.com/096b4c4f7a1b308b080f75759cc45ef9e1124139_full.jpg" width="70%" class="center" style="border: 3px solid lightskyblue; margin-top: 20px; margin-bottom: 20px;">
+            <br>
+            <p style="text-align: center; color: lightgray; font-size: 20px; font-weight: 600; font-family: Verdana, Geneva, Tahoma, sans-serif;">Current Rank</p>
+            <br>
+            <div id="rangaT" style="display: grid; place-items: center;"></div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="https://steamcommunity.com/profiles/76561198362442232" target="_blank" style="display: grid; place-items: center; text-decoration: none !important;">
+                <button style="background-color: lightgray; padding: 10px; font-size: 40px; font-weight: 600; font-family: Verdana, Geneva, Tahoma, sans-serif; border: 2px outset gray; border-radius: 10px;">Give -rep</button>
+            </a> 
+            <br>   
+        </div>
+
+        <div id="winlose" style="display:inline-block; margin-top: 10px;" class="center"></div>
+
+        <div style="background-color:rgba(34, 34, 34, 0.527); width:35%; border: 2px inset gray; float:right; margin-top: 10px;">
+            <p style="margin-top: 25px; text-align: center; font-size: 30px; font-weight: 600; color:lightgray; font-family: Verdana, Geneva, Tahoma, sans-serif;">ShadowWizardMoneyGang</p>
+            <image src="https://avatars.akamai.steamstatic.com/a948201b468d1c93ea4c8868f98defc6d2755799_full.jpg" width="70%" class="center" style="border: 3px solid orange; margin-top: 20px; margin-bottom: 20px;">
+            <br>
+            <p style="text-align: center; color: lightgray; font-size: 20px; font-weight: 600; font-family: Verdana, Geneva, Tahoma, sans-serif;">Current Rank</p>
+            <br>
+            <div style="display: grid; place-items: center;" id="rangaM"></div><div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <a href="https://steamcommunity.com/profiles/76561198798070881" target="_blank" style="display: grid; place-items: center; text-decoration: none !important;">
+                <button style="background-color: lightgray; padding: 10px; font-size: 40px; font-weight: 600; font-family: Verdana, Geneva, Tahoma, sans-serif; border: 2px outset gray; border-radius: 10px;">Give -rep</button>
+            </a>
+            <br>
+        </div>
+    </div>
+
+<script>
+    let wl = [1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0];
+
+    var text = document.getElementById('winlose');
+    var table = '<table style="position:absolute; float: ; width: 29.5%" id="bagno"><thead><tr><th style="font-size:60%">Id</th><th style="font-size:60%">AJ</th><th style="font-size:60%">Win/Lose</th><th style="font-size:60%">SWMG</th><th style="font-size:60%">Winrate</th></tr></thead><tbody>';   
+    
+    let rUDM = [];
+    let rUDT = [];
+
+    function rUDMset(place,updown){
+        rUDM[place-1] = updown;
+    }
+
+    function rUDTset(place,updown){
+        rUDT[place-1] = updown;
+    }
+ 
+    let sum = 0;
+    for(let i = 0; i < wl.length; i++){
+        sum += wl[i];
+        const w ="win";
+        const l ="lose";
+        const ru ="RANK UP";
+        const rd ="RANK DOWN"
+        const rub = "background-color: lime;";
+        const rdb = "background-color: rgb(140, 0, 0);"
+        let a, b, c, d, e;
+        if( rUDM[i] == 1 ){ b = ru; e = rub; }
+        if( rUDM[i] == 0 ){ b = rd; e = rdb; }
+        if( rUDM[i] == null ){ b = ""; }
+        if( rUDT[i] == 1 ){ c = ru; d = rub; }
+        if( rUDT[i] == 0 ){ c = rd; d = rdb; }
+        if( rUDT[i] == null ){ c = ""; } 
+        if( wl[i] == 1){ a = w; }
+        else{ a = l;}
+        table += '<tr class="rzad"><td style="font-size:70%; background-color:darkgray">' + (i+1) + '</td><td style="font-size:70%;' + d + '" class="kom2">' + c + '</td><td style="font-size:70%" class="kom" id="gej">' + a + '</td><td style="font-size:70%;' + e + ' ">' + b + '</td><td style="font-size:70%; background-color:darkgray;" class="kom2">' + ((sum/(i+1)).toFixed(2))*100+"%" + '</td></tr>';
+    }
+    table += '</tbody></table>';
+
+    text.innerHTML = table;
+
+</script>
+
+<script>
+    const rows = document.querySelectorAll(".rzad");
+    const cells = document.querySelectorAll(".kom");
+    for(let i = 0; i < cells.length; i++){
+        const stock = rows[i].querySelector(".kom").textContent;
+
+        if(stock == "win"){
+            cells[i].classList.add("win");
+        }
+        else{
+            cells[i].classList.add("lose");
+        }
+    }
+</script>
+
+<script>
+    let rankM = 7;
+    let rankT = 7;
+    for(let i = 0; i < rUDM.length; i++){
+        if( rUDM[i] == 1 ){ rankM += 1 }
+        if( rUDM[i] == 0 ){ rankM -= 1 }
+    }
+    for(let i = 0; i < rUDT.length; i++){
+        if( rUDT[i] == 1 ){ rankT += 1 }
+        if( rUDT[i] == 0 ){ rankT -= 1 }
+    }
+    var s1 = document.createElement("img"); 
+    s1.src = "https://static.totalcsgo.com/totalcsgo-strapi/silver_1_46a99a39f8.png";
+    var s2 = document.createElement("img"); 
+    s2.src = "https://static.totalcsgo.com/totalcsgo-strapi/silver_2_c07d0facdd.png";
+    var s3 = document.createElement("img"); 
+    s3.src = "https://static.totalcsgo.com/totalcsgo-strapi/silver_3_5d1ca03c7e.png";
+    var s4 = document.createElement("img"); 
+    s4.src = "https://static.totalcsgo.com/totalcsgo-strapi/silver_4_0c5d383e29.png";
+    var s5 = document.createElement("img"); 
+    s5.src = "https://static.totalcsgo.com/totalcsgo-strapi/silver_elite_317c688372.png";
+    var s6 = document.createElement("img"); 
+    s6.src = "https://static.totalcsgo.com/totalcsgo-strapi/silver_elite_master_9717189fe5.png";
+    var g1 = document.createElement("img");
+    g1.src = "https://static.totalcsgo.com/totalcsgo-strapi/gold_nova_1_cec4b69c20.png";
+    var g2 = document.createElement("img"); 
+    g2.src = "https://static.totalcsgo.com/totalcsgo-strapi/gold_nova_2_700f45ba47.png";
+    var g3 = document.createElement("img"); 
+    g3.src = "https://static.totalcsgo.com/totalcsgo-strapi/gold_nova_3_78bbea8969.png";
+    var g4 = document.createElement("img");
+    g4.src = "https://static.totalcsgo.com/totalcsgo-strapi/gold_nova_master_e0b4e1790f.png";
+    var mg1 = document.createElement("img"); 
+    mg1.src = "https://static.totalcsgo.com/totalcsgo-strapi/master_guardian_1_705461cdaa.png";
+    var mg2 = document.createElement("img"); 
+    mg2.src = "https://static.totalcsgo.com/totalcsgo-strapi/master_guardian_2_34c0aa8b4c.png";
+    var mge = document.createElement("img"); 
+    mge.src = "https://static.totalcsgo.com/totalcsgo-strapi/master_guardian_elite_6b4b6401ee.png";
+    var dmg = document.createElement("img"); 
+    dmg.src = "https://static.totalcsgo.com/totalcsgo-strapi/distinguished_master_guardian_c867a8385a.png";
+    var le = document.createElement("img"); 
+    le.src = "https://static.totalcsgo.com/totalcsgo-strapi/legendary_eagle_c040258efa.png";
+    var lem = document.createElement("img"); 
+    lem.src = "https://static.totalcsgo.com/totalcsgo-strapi/legendary_eagle_master_4d72faaf57.png";
+    var sup = document.createElement("img"); 
+    sup.src = "https://static.totalcsgo.com/totalcsgo-strapi/supreme_master_first_class_d274bcdb5f.png";
+    var ge = document.createElement("img"); 
+    ge.src = "https://static.totalcsgo.com/totalcsgo-strapi/global_elite_0e7e234eeb.png";
+    var container = document.getElementById("rangaT");
+    if(rankT == 1){ container.appendChild(s1); }
+    if(rankT == 2){ container.appendChild(s2); }
+    if(rankT == 3){ container.appendChild(s3); }
+    if(rankT == 4){ container.appendChild(s4); }
+    if(rankT == 5){ container.appendChild(s5); }
+    if(rankT == 6){ container.appendChild(s6); }
+    if(rankT == 7){ container.appendChild(g1); } 
+    if(rankT == 8){ container.appendChild(g2); }
+    if(rankT == 9){ container.appendChild(g3); }
+    if(rankT == 10){ container.appendChild(g4); } 
+    if(rankT == 11){ container.appendChild(mg1); }
+    if(rankT == 12){ container.appendChild(mg2); }
+    if(rankT == 13){ container.appendChild(mge); }
+    if(rankT == 14){ container.appendChild(dmg); }
+    if(rankT == 15){ container.appendChild(le); }
+    if(rankT == 16){ container.appendChild(lem); }
+    if(rankT == 17){ container.appendChild(sup); }
+    if(rankT == 18){ container.appendChild(ge); }
+
+</script>
+    
+<script>
+    var s1 = document.createElement("img"); 
+    s1.src = "https://static.totalcsgo.com/totalcsgo-strapi/silver_1_46a99a39f8.png";
+    var s2 = document.createElement("img"); 
+    s2.src = "https://static.totalcsgo.com/totalcsgo-strapi/silver_2_c07d0facdd.png";
+    var s3 = document.createElement("img"); 
+    s3.src = "https://static.totalcsgo.com/totalcsgo-strapi/silver_3_5d1ca03c7e.png";
+    var s4 = document.createElement("img"); 
+    s4.src = "https://static.totalcsgo.com/totalcsgo-strapi/silver_4_0c5d383e29.png";
+    var s5 = document.createElement("img"); 
+    s5.src = "https://static.totalcsgo.com/totalcsgo-strapi/silver_elite_317c688372.png";
+    var s6 = document.createElement("img"); 
+    s6.src = "https://static.totalcsgo.com/totalcsgo-strapi/silver_elite_master_9717189fe5.png";
+    var g1 = document.createElement("img");
+    g1.src = "https://static.totalcsgo.com/totalcsgo-strapi/gold_nova_1_cec4b69c20.png";
+    var g2 = document.createElement("img"); 
+    g2.src = "https://static.totalcsgo.com/totalcsgo-strapi/gold_nova_2_700f45ba47.png";
+    var g3 = document.createElement("img"); 
+    g3.src = "https://static.totalcsgo.com/totalcsgo-strapi/gold_nova_3_78bbea8969.png";
+    var g4 = document.createElement("img");
+    g4.src = "https://static.totalcsgo.com/totalcsgo-strapi/gold_nova_master_e0b4e1790f.png";
+    var mg1 = document.createElement("img"); 
+    mg1.src = "https://static.totalcsgo.com/totalcsgo-strapi/master_guardian_1_705461cdaa.png";
+    var mg2 = document.createElement("img"); 
+    mg2.src = "https://static.totalcsgo.com/totalcsgo-strapi/master_guardian_2_34c0aa8b4c.png";
+    var mge = document.createElement("img"); 
+    mge.src = "https://static.totalcsgo.com/totalcsgo-strapi/master_guardian_elite_6b4b6401ee.png";
+    var dmg = document.createElement("img"); 
+    dmg.src = "https://static.totalcsgo.com/totalcsgo-strapi/distinguished_master_guardian_c867a8385a.png";
+    var le = document.createElement("img"); 
+    le.src = "https://static.totalcsgo.com/totalcsgo-strapi/legendary_eagle_c040258efa.png";
+    var lem = document.createElement("img"); 
+    lem.src = "https://static.totalcsgo.com/totalcsgo-strapi/legendary_eagle_master_4d72faaf57.png";
+    var sup = document.createElement("img"); 
+    sup.src = "https://static.totalcsgo.com/totalcsgo-strapi/supreme_master_first_class_d274bcdb5f.png";
+    var ge = document.createElement("img"); 
+    ge.src = "https://static.totalcsgo.com/totalcsgo-strapi/global_elite_0e7e234eeb.png";
+    var container2 = document.getElementById("rangaM"); 
+    if(rankM == 1){ container2.appendChild(s1); }
+    if(rankM == 2){ container2.appendChild(s2); }
+    if(rankM == 3){ container2.appendChild(s3); }
+    if(rankM == 4){ container2.appendChild(s4); }
+    if(rankM == 5){ container2.appendChild(s5); }
+    if(rankM == 6){ container2.appendChild(s6); }
+    if(rankM == 7){ container2.appendChild(g1); } 
+    if(rankM == 8){ container2.appendChild(g2); }
+    if(rankM == 9){ container2.appendChild(g3); }
+    if(rankM == 10){ container2.appendChild(g4); } 
+    if(rankM == 11){ container2.appendChild(mg1); }
+    if(rankM == 12){ container2.appendChild(mg2); }
+    if(rankM == 13){ container2.appendChild(mge); }
+    if(rankM == 14){ container2.appendChild(dmg); }
+    if(rankM == 15){ container2.appendChild(le); }
+    if(rankM == 16){ container2.appendChild(lem); }
+    if(rankM == 17){ container2.appendChild(sup); }
+    if(rankM == 18){ container2.appendChild(ge); }
+</script>
+
+<style>
+    body{
+        background-image: url('https://img.freepik.com/free-vector/texture-background-grey-color_1048-2950.jpg?size=626&ext=jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+        position:relative
+    }
+    .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    }
+    table{
+        text-align: center;
+        border-collapse: collapse;
+    }
+    th{
+        background-color: rgb(59, 59, 59);
+        padding: 2px;
+        border: 2px black solid;
+    }
+    td{
+        padding: 2px;
+        border: 2px black solid;
+    }
+
+    .win{
+        background-color: green;
+    }
+    .lose{
+        background-color: red;
+    }
+</style>
