@@ -52,7 +52,7 @@
     </div>
 
 <script>
-    let wl = [1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1];
+    let wl = [1,0,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,0,1,1,1,1,1,1,1,1,1];
 
     var text = document.getElementById('winlose');
     var table = '<table style="position:absolute; float: ; width: 29.5%" id="bagno"><thead><tr><th style="font-size:60%">Id</th><th style="font-size:60%">AJ</th><th style="font-size:60%">Win/Lose</th><th style="font-size:60%">SWMG</th><th style="font-size:60%">Winrate</th></tr></thead><tbody>';   
@@ -71,10 +71,12 @@
     rUDMset(6,1);
     rUDMset(11,1);
     rUDMset(29,1);
+    rUDMset(30,1);
     
-    rUDTset(29,1);
     rUDTset(6,1);
     rUDTset(7,1);
+    rUDTset(29,1);
+    rUDTset(30,1);
     
     let sum = 0;
     for(let i = 0; i < wl.length; i++){
